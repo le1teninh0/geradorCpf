@@ -1,5 +1,5 @@
 from random import randint
-
+# mostra o menu na tela
 def menu():
    print("""
     =*=*=*=*=*=*=*=*=*=*=
@@ -9,6 +9,7 @@ def menu():
     =*=*=*=*=*=*=*=*=*=*=
     """)
 
+# função para retornar os digitos do CPF
 def calculaDigitos(cpf):
     numeros = cpf
     soma = 0
@@ -26,21 +27,26 @@ def calculaDigitos(cpf):
 
     return numeros[9::]
 
-
+# gera um cpf aleatório válido
 def gerarCPF():
     cpf = ''
+    # aqui gera os 9 primeiros números
     while len(cpf) <= 8:
         numero = str(randint(0, 9))
         cpf += numero
 
+    # aqui passa os 9 números para função de calcular o digito e anexa no cpf
     cpf += calculaDigitos(cpf)
     
     return cpf
 
+# aqui recebe o cpf e separa os números do digito e valida o cpf
 def validarCPF(cpf):
     numeros = cpf[:9]
     digitos = cpf[9::]
     return True if digitos ==  calculaDigitos(numeros) else False
+
+
 
 while True:
     menu()
